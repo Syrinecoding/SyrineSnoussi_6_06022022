@@ -48,7 +48,7 @@ exports.login = (req, res) => {
                     sign (payload, clé secrete pour encodage, config expiration)*/
                     token: jwt.sign(
                         { userId: user._id},
-                        'RANDOM_TOKEN_SECRET',
+                        process.env.MY_TOKEN_KEY,
                         { expiresIn: '24h' }
                     )
                 });
