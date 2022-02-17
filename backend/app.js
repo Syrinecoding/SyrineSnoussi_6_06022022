@@ -8,6 +8,8 @@ const helmet = require('helmet');
 // installation Cors 
 // TODO verifier comment configurer cors
 const cors = require('cors');
+// limiter les requêtes
+const rateLimit = require('express-rate-limit');
 // importation de mongoose
 const mongoose = require('mongoose');
 // importation de path pour accéder au path du serveur
@@ -24,11 +26,18 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER_NAME}:${process.env.DB_USE
 .then(() => console.log('connexion à MongoDB réussie !'))
 .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 min
+    max: 100, // limite chaque IP à 100 requêtes par window de 15min
+    standardHeaders: true, // retourne l'info de limite dans les headers
+    legacyHeaders: false // désactive le 'X-rateLimit-*' headers
+});
 
 // appel de la méthode express
 const app = express();
 app.use(helmet());
 app.use(cors());
+app.use(limiter);
 
 // Prévention des erreurs CORS
 app.use((req, res, next) => {
