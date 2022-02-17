@@ -7,7 +7,7 @@ Then clone the repository and run `npm install`.
 
 ## Usage ##
 
-Run `node server`
+Run `nodemon server` for the backend server.
 
 If your browser fails to launch, or shows a 404 error, navigate your browser to http://localhost:3000.
 
@@ -19,10 +19,8 @@ The data base is provided by MongoDB.
 
 The file .env provides these environmental variables :
 * PORT
-
 * DB_USER_NAME
 * DB_USER_PASS 
 * DB_CLUSTER_NAME 
 * DB_NAME 
-
 * MY_TOKEN_KEY
