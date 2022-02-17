@@ -16,7 +16,7 @@ exports.signup = (req, res, next) => {
                 email: req.body.email,
                 password: hash
             });
-            // TODO vérifier que req.body.email est bien un mail. cf module de validation de node.js
+            // ? vérifier que req.body.email est bien un mail. cf module de validation de node.js
             // enregistrer l'user dans la BDD
             user.save()
                 .then(() => res.status(201).json({ message: 'Utilisateur créé !'}))

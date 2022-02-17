@@ -12,7 +12,7 @@ exports.likeSauce = (req, res, next) => {
     switch(likeStatus) {
         // ajout d'un like
         case 1:
-            // TODO vérifier qu'il n'y a pas déjà un like avec findOne
+            // ? vérifier qu'il n'y a pas déjà un like avec findOne
             Sauce.updateOne({ _id: sauceId}, { 
                 $inc: { likes: +1 }, 
                 $push: { usersLiked: req.body.userId }
